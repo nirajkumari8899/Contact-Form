@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-modal__content slds-p-around_medium">
+ 
+    <div class="slds-grid slds-wrap">
+    <form>
+        <table>
+              <tr>
+                 <td>
+                    <div class="slds-m-right_xx-large">
+                        <lightning-input type="number" label="Term"   value={Term__c} onchange={handleTermChange} required></lightning-input>
+                     </div>
+                </td>
+                <td>
+                    <div class="slds-m-right_xx-large">
+                         <lightning-input type="currency" label="Forecast Amount (per month)"  value={Forecast_Amount_per_month__c} onchange={handleForecastAmountChange} required></lightning-input>
+                    </div>
+                </td>
+                 <td>
+                     <div class="slds-m-right_xx-large">
+                         <lightning-input type="date"  label="Start Date" value={Start_Date__c} onchange={handleStartDateChange} required></lightning-input>
+                    </div>
+                </td>
+             </tr>
+              <tr>
+                <td>
+                    <div class="slds-m-top_large">
+                       <lightning-input type="number" label="Incremental increase/decrease"  value={Incremental_increase_decrease__c} onchange={handleIncrementalChange} required></lightning-input>
+                    </div>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    <div class="slds-m-top_large">
+                        <template if:true={optionValues.data}>
+                            <lightning-combobox name="progress" label="Option" value={value}
+                                options={optionValues.data.values} onchange={handleOptionChange}>
+                            </lightning-combobox>
+                        </template>
+                    </div>
+                 </td>
+            </tr>
+             <tr>
+                <td>
+                    <div class="slds-m-top_large">
+                       <br><lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button></br>
+                   </div>
+                </td>
+            </tr>
+       </table> 
+   </form>
+   </div>
+   </div>  
+</template>
