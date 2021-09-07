@@ -17,7 +17,6 @@ export default class ContactForm extends LightningElement {
     
     @wire(getObjectInfo, { objectApiName: CONTACT_OBJECT })
     contactInfo;
-
     @wire(getPicklistValues,
         {
             recordTypeId: '$contactInfo.data.defaultRecordTypeId',
