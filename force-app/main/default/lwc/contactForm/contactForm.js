@@ -52,17 +52,17 @@ export default class ContactForm extends LightningElement {
              );
         }
         else{
-        createcContactRecordOnTerm({ 
-            term : this.a_Term_Ref, 
-            forecastAmount : this.a_Forecast_Amount_Ref, 
-            startDate : this.a_Start_Date_Ref,
-            incremental : this.a_Incremental_Ref,
-            option : this.value
-        })
-        .then(result => {
-            this.message = result;
-            this.error = undefined;
-            if(this.message !== undefined) {
+            createcContactRecordOnTerm({ 
+               term : this.a_Term_Ref, 
+               forecastAmount : this.a_Forecast_Amount_Ref, 
+               startDate : this.a_Start_Date_Ref,
+               incremental : this.a_Incremental_Ref,
+               option : this.value
+           })
+           .then(result => {
+              this.message = result;
+              this.error = undefined;
+              if(this.message !== undefined) {
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Success',
@@ -71,24 +71,20 @@ export default class ContactForm extends LightningElement {
                     }),
                 );
                 window.location.reload();
-            }
-            
-            console.log(JSON.stringify(result));
-            console.log("result", this.message);
-        })
-        .catch(error => {
-            this.message = undefined;
-            this.error = error;
-            this.dispatchEvent(
+              }
+           })
+           .catch(error => {
+              this.message = undefined;
+              this.error = error;
+              this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Error creating record',
                     message: error.body.message,
                     variant: 'error',
                 }),
             );
-            console.log("error", JSON.stringify(this.error));
-        });
-     }
+           });
+        }
      
     }
 }
